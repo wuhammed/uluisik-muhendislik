@@ -3,6 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroVisual from '../components/HeroVisual.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import BrandIcons from '../components/BrandIcons.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import Faq from '../components/Faq.astro';
+import LogoMark from '../components/LogoMark.astro';
 import { SITE, withBase } from '../data/site';
 import { SERVICES, WHY_US } from '../data/services';
 
@@ -11,6 +14,13 @@ const heroImg =
   'https://images.unsplash.com/photo-1509391111737-9b07f052f6b6?auto=format&fit=crop&w=1600&q=70';
 
 const icons = ['plan', 'meter', 'dig', 'panel', 'consult'] as const;
+
+const TRUST = [
+  { title: 'AG & YG Uzmanlığı', desc: 'Alçak ve yüksek gerilimde proje ve uygulama' },
+  { title: 'Resmi Süreç Takibi', desc: 'Başvuru, onay ve abonelik uçtan uca bizde' },
+  { title: 'Tek Noktadan Hizmet', desc: 'Keşiften enerji bağlantısına tek muhatap' },
+  { title: 'Mevzuata Uygunluk', desc: 'Teknik standartlara ve şartnamelere tam uyum' },
+];
 ---
 
 <BaseLayout
@@ -31,15 +41,28 @@ const icons = ['plan', 'meter', 'dig', 'panel', 'consult'] as const;
     <div class="hero-overlay" aria-hidden="true"></div>
     <HeroVisual />
     <div class="container hero-content">
-      <span class="eyebrow">{SITE.tagline}</span>
-      <h1>{SITE.slogan}</h1>
-      <p class="muted hero-sub">
+      <div class="hero-mark" data-reveal>
+        <LogoMark size={84} />
+      </div>
+      <div class="hero-badges" data-reveal style="--d: 0.08s">
+        <span class="badge glass">
+          <span class="live-dot" aria-hidden="true"></span>
+          Atakum / Samsun
+        </span>
+        <span class="badge glass">Elektrik &amp; Proje &amp; Taahhüt</span>
+      </div>
+      <h1 data-reveal style="--d: 0.16s">
+        Güvenilir Mühendislik,<br />
+        <span class="gold-text">Doğru Projelendirme</span>,<br />
+        Profesyonel Uygulama
+      </h1>
+      <p class="hero-sub" data-reveal style="--d: 0.24s">
         AG ve YG elektrik projelendirme, abonelik işlemleri, enerji altyapısı ve elektrik
         taahhüt hizmetlerinde; keşiften enerji bağlantısına kadar tüm süreci tek noktadan
         yönetiyoruz.
       </p>
-      <div class="hero-actions">
-        <a class="btn btn-gold" href={SITE.phoneHref}>
+      <div class="hero-actions" data-reveal style="--d: 0.32s">
+        <a class="btn btn-gold pulse" href={SITE.phoneHref}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path>
           </svg>
@@ -53,12 +76,32 @@ const icons = ['plan', 'meter', 'dig', 'panel', 'consult'] as const;
     </div>
   </section>
 
-  <section class="section">
+  <section class="trust-band">
     <div class="container">
-      <span class="eyebrow">Firmamız</span>
-      <h2>Elektrik Mühendisliği ve Taahhüt Hizmetleri</h2>
-      <hr class="divider" />
-      <p class="muted intro-text">
+      <div class="grid trust-grid">
+        {
+          TRUST.map((t, i) => (
+            <div class="glass trust-item" data-reveal style={`--d: ${i * 0.1}s`}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+              <div>
+                <strong>{t.title}</strong>
+                <span class="muted">{t.desc}</span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="orb" style="width: 420px; height: 420px; background: var(--orb-a); top: -120px; right: -140px;"></div>
+    <div class="container">
+      <span class="eyebrow" data-reveal>Firmamız</span>
+      <h2 data-reveal style="--d: 0.08s">Elektrik Mühendisliği ve Taahhüt Hizmetleri</h2>
+      <p class="muted intro-text" data-reveal style="--d: 0.16s">
         Elektrik mühendisliği alanında faaliyet gösteren firmamız; konut, ticari yapılar,
         sanayi tesisleri ve farklı nitelikteki projelerin elektrik ihtiyaçlarını yürürlükteki
         mevzuat, teknik standartlar ve dağıtım şirketi şartlarına uygun şekilde projelendiriyor
@@ -72,18 +115,19 @@ const icons = ['plan', 'meter', 'dig', 'panel', 'consult'] as const;
 
   <section class="section section-alt">
     <div class="container">
-      <span class="eyebrow">Uzmanlık Alanlarımız</span>
-      <h2>Baştan Sona Elektrik Çözümleri</h2>
-      <hr class="divider" />
+      <span class="eyebrow" data-reveal>Uzmanlık Alanlarımız</span>
+      <h2 data-reveal style="--d: 0.08s">Baştan Sona Elektrik Çözümleri</h2>
       <div class="grid grid-3 services-grid">
         {
           SERVICES.map((s, i) => (
-            <ServiceCard
-              title={s.title}
-              summary={s.summary}
-              href={withBase(`/hizmetler#${s.slug}`)}
-              icon={icons[i]}
-            />
+            <div data-reveal style={`--d: ${i * 0.1}s`}>
+              <ServiceCard
+                title={s.title}
+                summary={s.summary}
+                href={withBase(`/hizmetler#${s.slug}`)}
+                icon={icons[i]}
+              />
+            </div>
           ))
         }
       </div>
@@ -91,16 +135,34 @@ const icons = ['plan', 'meter', 'dig', 'panel', 'consult'] as const;
   </section>
 
   <section class="section">
+    <div class="orb" style="width: 380px; height: 380px; background: var(--orb-b); bottom: -100px; left: -120px;"></div>
     <div class="container">
-      <span class="eyebrow">Neden Biz?</span>
-      <h2>Mühendislik Disiplini, Teknik Doğruluk</h2>
-      <hr class="divider" />
+      <span class="eyebrow" data-reveal>Nasıl Çalışıyoruz?</span>
+      <h2 data-reveal style="--d: 0.08s">Keşiften Enerji Bağlantısına</h2>
+      <p class="muted" data-reveal style="--d: 0.14s">
+        Süreç, tek hat şeması gibi ilerler: her adım bir öncekine bağlıdır ve hepsi tek
+        muhatapla yürür.
+      </p>
+      <ProcessSteps />
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container why-grid">
+      <div>
+        <span class="eyebrow" data-reveal>Neden Biz?</span>
+        <h2 data-reveal style="--d: 0.08s">Mühendislik Disiplini, Teknik Doğruluk</h2>
+        <p class="muted" data-reveal style="--d: 0.14s">
+          Her projede mühendislik disiplini, teknik doğruluk, iş güvenliği ve kalite
+          ilkelerinden taviz vermeden çalışıyoruz.
+        </p>
+      </div>
       <ul class="why-list">
         {
-          WHY_US.map((item) => (
-            <li>
+          WHY_US.map((item, i) => (
+            <li data-reveal style={`--d: ${i * 0.07}s`}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M20 6 9 17l-5-5"></path>
+                <path d="M20 6 9 17l-5-5" />
               </svg>
               {item}
             </li>
@@ -110,17 +172,26 @@ const icons = ['plan', 'meter', 'dig', 'panel', 'consult'] as const;
     </div>
   </section>
 
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow" data-reveal>Sık Sorulanlar</span>
+      <h2 data-reveal style="--d: 0.08s">Süreçle İlgili Merak Edilenler</h2>
+      <Faq />
+    </div>
+  </section>
+
   <section class="section cta-strip">
+    <div class="orb" style="width: 460px; height: 460px; background: var(--orb-a); top: -160px; right: 10%;"></div>
     <div class="container cta-inner">
-      <div>
+      <div data-reveal>
         <h2>Projeniz için bugün görüşelim</h2>
         <p class="muted">
           Keşif, projelendirme ve abonelik süreçleriniz için bize ulaşın; ihtiyacınıza özel
           çözümü birlikte planlayalım.
         </p>
       </div>
-      <div class="cta-actions">
-        <a class="btn btn-gold" href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
+      <div class="cta-actions" data-reveal style="--d: 0.12s">
+        <a class="btn btn-gold pulse" href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
         <a class="btn btn-whatsapp" href={SITE.whatsappHref} rel="noopener">
           <BrandIcons name="whatsapp" size={20} />
           WhatsApp
@@ -133,9 +204,12 @@ const icons = ['plan', 'meter', 'dig', 'panel', 'consult'] as const;
 <style>
   .hero {
     position: relative;
-    background: #0e1116;
+    background: #0b0e13;
     border-bottom: 1px solid var(--line-soft);
     overflow: hidden;
+    min-height: min(88vh, 860px);
+    display: flex;
+    align-items: center;
   }
 
   .hero :global(.hero-img) {
@@ -149,55 +223,146 @@ const icons = ['plan', 'meter', 'dig', 'panel', 'consult'] as const;
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(14, 17, 22, 0.82), rgba(14, 17, 22, 0.68) 55%, rgba(14, 17, 22, 0.88));
+    background: linear-gradient(180deg, rgba(11, 14, 19, 0.86), rgba(11, 14, 19, 0.68) 55%, rgba(11, 14, 19, 0.94));
   }
 
   /* Hero fotoğraf üstünde her iki temada da açık renk metin kullanır */
   .hero-content {
     position: relative;
-    padding-block: clamp(4rem, 10vw, 7.5rem);
-    max-width: 720px;
+    z-index: 1;
+    padding-block: clamp(4.5rem, 10vw, 7rem);
+    max-width: 780px;
     margin-inline: auto;
     text-align: center;
-    color: #f2f4f8;
+    color: #f4f6fa;
+  }
+
+  .hero-mark {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+    filter: drop-shadow(0 8px 30px rgba(245, 197, 27, 0.35));
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.42rem 0.95rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #e8ebf0;
+  }
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f5c51b;
+    box-shadow: 0 0 0 4px rgba(245, 197, 27, 0.22);
   }
 
   .hero-sub {
-    font-size: 1.1rem;
-    max-width: 56ch;
+    font-size: 1.12rem;
+    max-width: 58ch;
     margin-inline: auto;
-    color: #b8bec9;
-  }
-
-  .hero-content :global(.eyebrow) {
-    color: #f5c51b;
+    color: #b9c0cb;
   }
 
   .hero-actions {
     display: flex;
-    gap: 0.9rem;
+    gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    margin-top: 2.2rem;
+  }
+
+  .trust-band {
+    background: var(--bg-raised);
+    border-bottom: 1px solid var(--line-soft);
+    padding-block: 1.6rem;
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 700px) {
+    .trust-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .trust-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 1rem 1.1rem;
+  }
+
+  .trust-item svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex: none;
+    margin-top: 0.22rem;
+    color: var(--accent);
+  }
+
+  .trust-item strong {
+    display: block;
+    font-family: 'Sora Variable', sans-serif;
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .trust-item span {
+    font-size: 0.85rem;
+    line-height: 1.45;
+    display: block;
   }
 
   .intro-text {
-    max-width: 75ch;
+    max-width: 76ch;
   }
 
   .services-grid {
-    margin-top: 2rem;
+    margin-top: 2.4rem;
+  }
+
+  .services-grid > div {
+    display: grid;
+  }
+
+  .why-grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .why-grid {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: start;
+    }
   }
 
   .why-list {
     list-style: none;
-    margin: 2rem 0 0;
+    margin: 0;
     padding: 0;
     display: grid;
     gap: 0.9rem;
   }
 
-  @media (min-width: 700px) {
+  @media (min-width: 640px) {
     .why-list {
       grid-template-columns: 1fr 1fr;
     }
@@ -208,22 +373,26 @@ const icons = ['plan', 'meter', 'dig', 'panel', 'consult'] as const;
     align-items: flex-start;
     gap: 0.7rem;
     font-weight: 500;
+    font-size: 0.98rem;
   }
 
   .why-list svg {
     width: 1.25rem;
     height: 1.25rem;
     flex: none;
-    margin-top: 0.2rem;
+    margin-top: 0.18rem;
     color: var(--accent);
   }
 
   .cta-strip {
     background: var(--bg-raised);
     border-block: 1px solid var(--line-soft);
+    overflow: hidden;
   }
 
   .cta-inner {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -242,7 +411,7 @@ const icons = ['plan', 'meter', 'dig', 'panel', 'consult'] as const;
 
   .cta-actions {
     display: flex;
-    gap: 0.9rem;
+    gap: 1rem;
     flex-wrap: wrap;
   }
 </style>

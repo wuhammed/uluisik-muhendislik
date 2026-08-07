@@ -1,0 +1,95 @@
+---
+// Sık sorulanlar: sektörde gerçekten sorulan süreç soruları. Rakam ve süre
+// uydurulmaz; değişkenlik dürüstçe söylenir.
+const FAQS = [
+  {
+    q: 'Yeni elektrik aboneliği için ne gerekiyor?',
+    a: 'Tesisin durumuna göre önce uygunluk ve keşif yapılır; ardından proje, dağıtım şirketine başvuru, sayaç ve bağlantı süreçleri yürütülür. Tüm adımları sizin adınıza biz takip ediyoruz.',
+  },
+  {
+    q: 'Güç artışı ne zaman gerekir?',
+    a: 'Mevcut sözleşme gücünüz yeni cihaz veya üretim yükünü karşılamıyorsa güç artışı gerekir. Yük analizini yapıp gerekli proje tadilatı ve başvuruları gerçekleştiriyoruz.',
+  },
+  {
+    q: 'Kazı ve altyapı çalışmasını da siz mi yapıyorsunuz?',
+    a: 'Evet. Kablo güzergâhı, kazı, borulama ve saha çalışmaları dahil enerji altyapısını kendi ekibimizle bir bütün olarak üstleniyoruz; ayrı bir firma aramanıza gerek kalmaz.',
+  },
+  {
+    q: 'Proje onay süreci ne kadar sürer?',
+    a: 'Süre; projenin kapsamına, ilgili kurumların ve dağıtım şirketinin yoğunluğuna göre değişir. Keşif sonrasında size gerçekçi bir takvim sunuyor, süreci aktif olarak takip ediyoruz.',
+  },
+  {
+    q: 'Hangi bölgelerde hizmet veriyorsunuz?',
+    a: 'Merkezimiz Atakum/Samsun; Samsun ve çevresindeki projelere hizmet veriyoruz. Kapsamı görüşmek için bize telefon veya WhatsApp ile ulaşabilirsiniz.',
+  },
+];
+---
+
+<div class="faq">
+  {
+    FAQS.map((item, i) => (
+      <details class="glass" data-reveal style={`--d: ${i * 0.08}s`}>
+        <summary>
+          <span>{item.q}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </summary>
+        <p class="muted">{item.a}</p>
+      </details>
+    ))
+  }
+</div>
+
+<style>
+  .faq {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 2.2rem;
+    max-width: 780px;
+  }
+
+  details {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.05rem 1.3rem;
+    font-weight: 600;
+    font-family: 'Sora Variable', sans-serif;
+    font-size: 1rem;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex: none;
+    color: var(--accent);
+    transition: transform 0.25s ease;
+  }
+
+  details[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  details p {
+    margin: 0;
+    padding: 0 1.3rem 1.2rem;
+    font-size: 0.97rem;
+  }
+
+  details[open] {
+    border-color: var(--line);
+  }
+</style>

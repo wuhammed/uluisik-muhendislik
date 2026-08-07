@@ -1,20 +1,25 @@
 :root,
 :root[data-theme='dark'] {
-  --bg: #0e1116;
-  --bg-raised: #151b24;
-  --bg-card: #1a212c;
-  --text: #f2f4f8;
-  --text-muted: #b8bec9;
+  --bg: #0b0e13;
+  --bg-raised: #10151e;
+  --bg-card: #141a25;
+  --text: #f4f6fa;
+  --text-muted: #aeb6c2;
   --accent: #f5c51b;
-  --accent-ink: #141002;
-  --gold-gradient: linear-gradient(135deg, #f5c51b 0%, #d99a0b 100%);
-  --line: rgba(245, 197, 27, 0.16);
-  --line-soft: rgba(184, 190, 201, 0.14);
+  --accent-soft: rgba(245, 197, 27, 0.12);
+  --accent-ink: #171203;
+  --gold-gradient: linear-gradient(135deg, #f8d34a 0%, #f5c51b 45%, #d9930b 100%);
+  --line: rgba(245, 197, 27, 0.18);
+  --line-soft: rgba(174, 182, 194, 0.13);
+  --glass-bg: rgba(255, 255, 255, 0.045);
+  --glass-border: rgba(245, 197, 27, 0.14);
   --whatsapp: #25d366;
   --whatsapp-ink: #06240f;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  --header-bg: rgba(14, 17, 22, 0.85);
-  --hero-glow: radial-gradient(ellipse 60% 50% at 70% 20%, rgba(245, 197, 27, 0.12), transparent 70%);
+  --shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+  --header-bg: rgba(11, 14, 19, 0.78);
+  --hero-glow: radial-gradient(ellipse 55% 45% at 72% 18%, rgba(245, 197, 27, 0.16), transparent 70%);
+  --orb-a: rgba(245, 197, 27, 0.14);
+  --orb-b: rgba(217, 147, 11, 0.1);
 }
 
 :root[data-theme='light'] {
@@ -22,17 +27,22 @@
   --bg-raised: #ffffff;
   --bg-card: #ffffff;
   --text: #171a20;
-  --text-muted: #555c66;
-  --accent: #a06e04;
+  --text-muted: #545b66;
+  --accent: #9c6b03;
+  --accent-soft: rgba(156, 107, 3, 0.1);
   --accent-ink: #ffffff;
-  --gold-gradient: linear-gradient(135deg, #d9a80c 0%, #a06e04 100%);
-  --line: rgba(160, 110, 4, 0.25);
+  --gold-gradient: linear-gradient(135deg, #d9a80c 0%, #b87e06 55%, #9c6b03 100%);
+  --line: rgba(156, 107, 3, 0.28);
   --line-soft: rgba(23, 26, 32, 0.12);
-  --whatsapp: #25d366;
-  --whatsapp-ink: #06240f;
-  --shadow: 0 10px 30px rgba(23, 26, 32, 0.1);
-  --header-bg: rgba(250, 249, 246, 0.88);
-  --hero-glow: radial-gradient(ellipse 60% 50% at 70% 20%, rgba(217, 168, 12, 0.14), transparent 70%);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(156, 107, 3, 0.2);
+  --whatsapp: #1faf54;
+  --whatsapp-ink: #ffffff;
+  --shadow: 0 18px 44px rgba(23, 26, 32, 0.12);
+  --header-bg: rgba(250, 249, 246, 0.85);
+  --hero-glow: radial-gradient(ellipse 55% 45% at 72% 18%, rgba(217, 168, 12, 0.16), transparent 70%);
+  --orb-a: rgba(217, 168, 12, 0.16);
+  --orb-b: rgba(184, 126, 6, 0.1);
 }
 
 *,
@@ -51,8 +61,9 @@ body {
   color: var(--text);
   font-family: 'Inter Variable', system-ui, -apple-system, sans-serif;
   font-size: 1.0625rem;
-  line-height: 1.65;
+  line-height: 1.68;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 h1,
@@ -60,18 +71,19 @@ h2,
 h3,
 h4 {
   font-family: 'Sora Variable', 'Inter Variable', system-ui, sans-serif;
-  line-height: 1.2;
+  line-height: 1.16;
   margin: 0 0 0.6em;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: clamp(1.9rem, 4.5vw, 3.1rem);
-  font-weight: 700;
+  font-size: clamp(2.1rem, 5.2vw, 3.6rem);
+  font-weight: 800;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-size: clamp(1.55rem, 3.2vw, 2.3rem);
   font-weight: 700;
 }
 
@@ -95,13 +107,19 @@ svg {
   display: block;
 }
 
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
 .container {
-  width: min(1120px, 100% - 2.5rem);
+  width: min(1140px, 100% - 2.5rem);
   margin-inline: auto;
 }
 
 .section {
-  padding-block: clamp(3rem, 7vw, 5.5rem);
+  padding-block: clamp(3.4rem, 8vw, 6.5rem);
+  position: relative;
 }
 
 .section-alt {
@@ -110,13 +128,23 @@ svg {
 }
 
 .eyebrow {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 26px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold-gradient);
 }
 
 .muted {
@@ -130,17 +158,22 @@ svg {
   color: transparent;
 }
 
+/* ---------- Butonlar ---------- */
+
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.55rem;
-  padding: 0.8rem 1.5rem;
-  border-radius: 10px;
-  font-weight: 600;
+  padding: 0.85rem 1.6rem;
+  border-radius: 12px;
+  font-weight: 650;
   font-size: 1rem;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  position: relative;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease,
+    color 0.18s ease;
 }
 
 .btn:hover {
@@ -156,10 +189,11 @@ svg {
 .btn-gold {
   background: var(--gold-gradient);
   color: var(--accent-ink);
+  box-shadow: 0 6px 18px rgba(217, 147, 11, 0.28);
 }
 
 .btn-gold:hover {
-  box-shadow: 0 8px 22px rgba(217, 154, 11, 0.35);
+  box-shadow: 0 10px 28px rgba(217, 147, 11, 0.42);
 }
 
 .btn-outline {
@@ -176,28 +210,69 @@ svg {
 .btn-whatsapp {
   background: var(--whatsapp);
   color: var(--whatsapp-ink);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.24);
 }
 
 .btn-whatsapp:hover {
-  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.38);
 }
+
+/* Telefon CTA'sında nabız halkası */
+.pulse {
+  position: relative;
+}
+
+.pulse::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 2px solid var(--accent);
+  opacity: 0;
+  animation: pulse-ring 2.6s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+
+  70%,
+  100% {
+    transform: scale(1.14);
+    opacity: 0;
+  }
+}
+
+/* ---------- Kartlar ---------- */
 
 .card {
   background: var(--bg-card);
   border: 1px solid var(--line-soft);
-  border-radius: 14px;
-  padding: 1.6rem;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  border-radius: 16px;
+  padding: 1.7rem;
+  transition: border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
 }
 
 .card:hover {
   border-color: var(--line);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .grid {
   display: grid;
-  gap: 1.25rem;
+  gap: 1.3rem;
 }
 
 @media (min-width: 700px) {
@@ -215,9 +290,72 @@ svg {
   border: 0;
   margin: 0;
   background: var(--gold-gradient);
-  opacity: 0.5;
+  opacity: 0.55;
   width: 64px;
   border-radius: 2px;
+}
+
+/* ---------- Glow orb'lar ---------- */
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- Scroll reveal ---------- */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--d, 0s);
+}
+
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Devre hattı (tek hat şeması) akım animasyonu ---------- */
+
+.flow {
+  stroke-dasharray: 10 150;
+  animation: current-flow 5.5s linear infinite;
+}
+
+@keyframes current-flow {
+  to {
+    stroke-dashoffset: -640;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .flow {
+    animation: none;
+    stroke-dasharray: none;
+  }
+
+  .pulse::after {
+    animation: none;
+  }
+
+  .btn,
+  .card {
+    transition: none;
+  }
 }
 
 @media (max-width: 767px) {

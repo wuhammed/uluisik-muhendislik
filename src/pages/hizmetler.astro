@@ -23,8 +23,8 @@ import { SERVICES } from '../data/services';
   <section class="section services">
     <div class="container">
       {
-        SERVICES.map((s) => (
-          <article id={s.slug} class="service-block">
+        SERVICES.map((s, i) => (
+          <article id={s.slug} class="service-block" data-reveal style={`--d: ${(i % 2) * 0.08}s`}>
             <h2>{s.title}</h2>
             <hr class="divider" />
             <p class="muted">{s.body}</p>

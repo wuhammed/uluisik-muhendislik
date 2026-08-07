@@ -1,0 +1,43 @@
+---
+import BrandIcons from './BrandIcons.astro';
+import { SITE } from '../data/site';
+---
+
+<a
+  class="floating-wa"
+  href={SITE.whatsappHref}
+  rel="noopener"
+  aria-label="WhatsApp'tan yazın"
+>
+  <BrandIcons name="whatsapp" size={26} />
+</a>
+
+<style>
+  .floating-wa {
+    position: fixed;
+    right: 1.4rem;
+    bottom: 1.4rem;
+    z-index: 70;
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--whatsapp);
+    color: #fff;
+    box-shadow: 0 10px 26px rgba(37, 211, 102, 0.4);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .floating-wa:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 14px 34px rgba(37, 211, 102, 0.5);
+  }
+
+  /* Mobilde alt CTA çubuğu zaten var */
+  @media (max-width: 767px) {
+    .floating-wa {
+      display: none;
+    }
+  }
+</style>

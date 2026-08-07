@@ -1,0 +1,52 @@
+---
+// Uluışık Mühendislik logosunun vektör kopyası: altın kalkan, gri UM
+// monogramı ve kalkanı çaprazlayan altın şimşek. Kaynak: firmanın logosu.
+interface Props {
+  size?: number;
+}
+
+const { size = 44 } = Astro.props;
+const uid = Math.random().toString(36).slice(2, 7);
+---
+
+<svg
+  class="logo-mark-svg"
+  width={size}
+  height={size}
+  viewBox="0 0 120 120"
+  fill="none"
+  aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id={`lg-gold-${uid}`} x1="20" y1="10" x2="100" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8D34A"></stop>
+      <stop offset="0.5" stop-color="#F5C51B"></stop>
+      <stop offset="1" stop-color="#C8890A"></stop>
+    </linearGradient>
+    <linearGradient id={`lg-silver-${uid}`} x1="30" y1="40" x2="90" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E8EAEE"></stop>
+      <stop offset="1" stop-color="#ADB3BD"></stop>
+    </linearGradient>
+  </defs>
+  <path
+    d="M60 7 20 20.5v34c0 27.5 16.5 44.5 40 53.5 23.5-9 40-26 40-53.5v-34L60 7Z"
+    stroke={`url(#lg-gold-${uid})`}
+    stroke-width="7"
+    stroke-linejoin="round"></path>
+  <text
+    x="60"
+    y="73"
+    text-anchor="middle"
+    font-family="'Sora Variable', 'Inter Variable', sans-serif"
+    font-weight="800"
+    font-size="40"
+    letter-spacing="-1"
+    fill={`url(#lg-silver-${uid})`}>UM</text>
+  <path
+    d="M83 14 57 51h13.5L60 96l32-49H78.5L94 22l-11-8Z"
+    fill={`url(#lg-gold-${uid})`}
+    stroke="#0b0e13"
+    stroke-width="2.5"
+    stroke-linejoin="round"></path>
+</svg>

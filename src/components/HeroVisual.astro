@@ -1,32 +1,38 @@
 ---
-// Hero arka planı: soyut devre hattı motifi + altın parıltı.
+// Tek hat şeması motifi: bara, kesici ve hat düğümleri. `.flow` sınıfı
+// hatların üzerinde akan "akım" nabzını canlandırır (reduced-motion'da durur).
 ---
 
 <div class="hero-visual" aria-hidden="true">
-  <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
     <defs>
       <linearGradient id="hv-gold" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#f5c51b" stop-opacity="0.55"></stop>
-        <stop offset="1" stop-color="#d99a0b" stop-opacity="0.15"></stop>
+        <stop offset="0" stop-color="#f8d34a" stop-opacity="0.6"></stop>
+        <stop offset="1" stop-color="#d9930b" stop-opacity="0.16"></stop>
       </linearGradient>
     </defs>
-    <g stroke="url(#hv-gold)" stroke-width="1.5" fill="none">
-      <path d="M40 520 H240 L300 460 H460 L520 400 H760"></path>
-      <path d="M0 420 H180 L240 360 H400 L470 290 H640 L700 230 H800"></path>
-      <path d="M120 600 V480 L180 420"></path>
-      <path d="M560 600 V500 L620 440 H760"></path>
-      <path d="M340 0 V90 L400 150 H560 L620 210"></path>
-      <path d="M700 0 V70 L640 130"></path>
+    <g stroke="url(#hv-gold)" stroke-width="1.5" fill="none" opacity="0.55">
+      <path d="M-20 560 H300 L370 490 H620 L690 420 H1220"></path>
+      <path d="M-20 460 H220 L290 390 H520 L600 310 H860 L930 240 H1220"></path>
+      <path d="M160 700 V560 L230 490"></path>
+      <path d="M760 700 V590 L830 520 H1050"></path>
+      <path d="M480 0 V120 L560 200 H800 L870 270"></path>
+      <path d="M1010 0 V90 L940 160"></path>
+    </g>
+    <g stroke="#f5c51b" stroke-width="2" fill="none" stroke-linecap="round">
+      <path class="flow" d="M-20 560 H300 L370 490 H620 L690 420 H1220"></path>
+      <path class="flow" style="animation-delay: -2.2s" d="M-20 460 H220 L290 390 H520 L600 310 H860 L930 240 H1220"></path>
+      <path class="flow" style="animation-delay: -3.8s" d="M480 0 V120 L560 200 H800 L870 270"></path>
     </g>
     <g fill="#f5c51b">
-      <circle cx="240" cy="520" r="4" opacity="0.8"></circle>
-      <circle cx="460" cy="460" r="4" opacity="0.6"></circle>
-      <circle cx="400" cy="360" r="4" opacity="0.7"></circle>
-      <circle cx="640" cy="290" r="4" opacity="0.5"></circle>
-      <circle cx="560" cy="150" r="4" opacity="0.6"></circle>
-      <circle cx="180" cy="420" r="4" opacity="0.7"></circle>
+      <circle cx="300" cy="560" r="4.5" opacity="0.85"></circle>
+      <circle cx="620" cy="490" r="4.5" opacity="0.6"></circle>
+      <circle cx="520" cy="390" r="4.5" opacity="0.75"></circle>
+      <circle cx="860" cy="310" r="4.5" opacity="0.55"></circle>
+      <circle cx="800" cy="200" r="4.5" opacity="0.65"></circle>
+      <circle cx="230" cy="490" r="4.5" opacity="0.7"></circle>
+      <circle cx="1050" cy="520" r="4.5" opacity="0.5"></circle>
     </g>
-    <path d="M430 180 380 260h32l-18 70 66-90h-34l24-60z" fill="url(#hv-gold)"></path>
   </svg>
 </div>
 
@@ -48,6 +54,5 @@
   .hero-visual svg {
     width: 100%;
     height: 100%;
-    opacity: 0.5;
   }
 </style>

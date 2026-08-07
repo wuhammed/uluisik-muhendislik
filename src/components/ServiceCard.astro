@@ -56,6 +56,27 @@ const { title, summary, href, icon } = Astro.props;
     display: flex;
     flex-direction: column;
     color: inherit;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Hover'da üst kenarda beliren altın hat */
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold-gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover::before {
+    transform: scaleX(1);
   }
 
   .service-icon {

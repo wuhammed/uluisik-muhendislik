@@ -1,0 +1,123 @@
+---
+// Süreç, tek hat şeması gibi bir bara üzerinde ilerler: kaynaktan (keşif)
+// enerji bağlantısına. Sıralama gerçek iş akışıdır; numaralar bu yüzden var.
+const STEPS = [
+  {
+    title: 'Keşif ve Analiz',
+    desc: 'Sahayı yerinde inceliyor, ihtiyacı ve gücü doğru belirliyoruz; keşif ve metraj çalışmasını hazırlıyoruz.',
+  },
+  {
+    title: 'Projelendirme',
+    desc: 'AG/YG projeyi teknik hesaplarıyla birlikte, mevzuata ve dağıtım şirketi şartlarına uygun çiziyoruz.',
+  },
+  {
+    title: 'Onay ve Abonelik',
+    desc: 'Resmi başvuruları yapıyor, proje onayını ve abonelik işlemlerini uçtan uca takip ediyoruz.',
+  },
+  {
+    title: 'Uygulama ve Enerji',
+    desc: 'Altyapı, kazı, pano ve tesisat uygulamasını tamamlayıp tesisi enerjilendiriyoruz.',
+  },
+];
+---
+
+<ol class="process">
+  {
+    STEPS.map((step, i) => (
+      <li data-reveal style={`--d: ${i * 0.12}s`}>
+        <span class="node" aria-hidden="true">
+          <span class="node-num">{i + 1}</span>
+        </span>
+        <h3>{step.title}</h3>
+        <p class="muted">{step.desc}</p>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .process {
+    list-style: none;
+    margin: 2.4rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 2rem;
+    position: relative;
+  }
+
+  @media (min-width: 860px) {
+    .process {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Bara: düğümleri birbirine bağlayan hat */
+    .process::before {
+      content: '';
+      position: absolute;
+      top: 1.35rem;
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--line) 12%, var(--line) 88%, transparent);
+    }
+  }
+
+  .process li {
+    position: relative;
+    padding-left: 3.4rem;
+  }
+
+  @media (min-width: 860px) {
+    .process li {
+      padding-left: 0;
+      padding-top: 3.6rem;
+      text-align: center;
+    }
+  }
+
+  .node {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--bg-card);
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 0 5px var(--accent-soft), 0 0 24px rgba(245, 197, 27, 0.25);
+  }
+
+  @media (min-width: 860px) {
+    .node {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .node-num {
+    font-family: 'Sora Variable', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--accent);
+  }
+
+  .process h3 {
+    font-size: 1.08rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .process p {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  @media (min-width: 860px) {
+    .process p {
+      max-width: 26ch;
+      margin-inline: auto;
+    }
+  }
+</style>

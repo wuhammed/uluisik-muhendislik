@@ -6,6 +6,7 @@ import { SITE, withBase } from '../data/site';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileCtaBar from '../components/MobileCtaBar.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 
 interface Props {
   title: string;
@@ -63,6 +64,28 @@ const jsonLd = {
       <slot />
     </main>
     <Footer />
+    <FloatingWhatsApp />
     <MobileCtaBar />
+    <script is:inline>
+      (() => {
+        const els = document.querySelectorAll('[data-reveal]');
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          els.forEach((el) => el.classList.add('is-in'));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-in');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -40px' }
+        );
+        els.forEach((el) => io.observe(el));
+      })();
+    </script>
   </body>
 </html>

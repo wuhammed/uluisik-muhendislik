@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BrandIcons from '../components/BrandIcons.astro';
+import { SITE } from '../data/site';
+import { SERVICES } from '../data/services';
+---
+
+<BaseLayout
+  title="Hizmetler"
+  description="AG & YG projelendirme, elektrik abonelik hizmetleri, enerji altyapısı ve kazı çalışmaları, elektrik taahhüt ve uygulama, mühendislik ve teknik danışmanlık."
+>
+  <section class="section page-head">
+    <div class="container">
+      <span class="eyebrow">Hizmetlerimiz</span>
+      <h1>Uzmanlık Alanlarımız</h1>
+      <p class="muted head-sub">
+        Mühendislik tecrübemiz ve teknik uzmanlığımız doğrultusunda; projelendirmeden
+        uygulamaya kadar elektrik ihtiyaçlarının tüm aşamalarında hizmet sunuyoruz.
+      </p>
+    </div>
+  </section>
+
+  <section class="section services">
+    <div class="container">
+      {
+        SERVICES.map((s) => (
+          <article id={s.slug} class="service-block">
+            <h2>{s.title}</h2>
+            <hr class="divider" />
+            <p class="muted">{s.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container cta-inner">
+      <div>
+        <h2>İhtiyacınız hangisi olursa olsun, konuşalım</h2>
+        <p class="muted">
+          Projenizin kapsamını birlikte değerlendirelim; size doğru ve uygulanabilir bir yol
+          haritası sunalım.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
+        <a class="btn btn-whatsapp" href={SITE.whatsappHref} rel="noopener">
+          <BrandIcons name="whatsapp" size={20} />
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head {
+    padding-bottom: 1.5rem;
+  }
+
+  .head-sub {
+    max-width: 62ch;
+    font-size: 1.05rem;
+  }
+
+  .services {
+    padding-top: 1rem;
+  }
+
+  .service-block {
+    padding-block: 2rem;
+    border-bottom: 1px solid var(--line-soft);
+    scroll-margin-top: 6rem;
+  }
+
+  .service-block:last-child {
+    border-bottom: 0;
+  }
+
+  .service-block p {
+    max-width: 72ch;
+    margin: 1rem 0 0;
+  }
+
+  .cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-inner h2 {
+    margin-bottom: 0.4rem;
+  }
+
+  .cta-inner p {
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+  }
+</style>

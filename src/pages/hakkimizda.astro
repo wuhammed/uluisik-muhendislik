@@ -1,8 +1,10 @@
 ---
-import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../data/site';
-import powerLines from '../assets/power-lines.jpg';
+
+// Unsplash (ücretsiz lisans): yüksek gerilim iletim hatları
+const powerLines =
+  'https://images.unsplash.com/photo-1704213198493-0ccd05a97af4?auto=format&fit=crop&w=1600&q=70';
 ---
 
 <BaseLayout
@@ -31,12 +33,13 @@ import powerLines from '../assets/power-lines.jpg';
           profesyonel şekilde tamamlamayı hedefliyoruz.
         </p>
       </div>
-      <Image
+      <img
         src={powerLines}
         alt="Yüksek gerilim iletim hatları"
         class="about-img"
-        widths={[768, 1280, 1600]}
-        sizes="(min-width: 1120px) 1120px, 100vw"
+        width="1600"
+        height="1067"
+        loading="lazy"
       />
     </div>
   </section>

@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroVisual from '../components/HeroVisual.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import BrandIcons from '../components/BrandIcons.astro';
-import { SITE } from '../data/site';
+import { SITE, withBase } from '../data/site';
 import { SERVICES, WHY_US } from '../data/services';
 
 // Unsplash (ücretsiz lisans): gece çekimi trafo merkezi
@@ -81,7 +81,7 @@ const icons = ['plan', 'meter', 'dig', 'panel', 'consult'] as const;
             <ServiceCard
               title={s.title}
               summary={s.summary}
-              href={`/hizmetler#${s.slug}`}
+              href={withBase(`/hizmetler#${s.slug}`)}
               icon={icons[i]}
             />
           ))

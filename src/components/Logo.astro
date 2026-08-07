@@ -1,5 +1,5 @@
 ---
-import { SITE } from '../data/site';
+import { SITE, withBase } from '../data/site';
 
 // Metin logotype: gerçek logo dosyası (src/assets/logo.png) teslim edilene
 // kadar kullanılır; tipografisi logodaki dizilimi izler.
@@ -10,7 +10,7 @@ interface Props {
 const { compact = false } = Astro.props;
 ---
 
-<a href="/" class:list={['logo', { compact }]} aria-label={`${SITE.name} — ana sayfa`}>
+<a href={withBase('/')} class:list={['logo', { compact }]} aria-label={`${SITE.name} — ana sayfa`}>
   <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
     <path
       d="M32 4 8 12v18c0 15 10 26 24 30 14-4 24-15 24-30V12L32 4z"

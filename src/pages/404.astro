@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../data/site';
 ---
 
 <BaseLayout title="Sayfa Bulunamadı" description="Aradığınız sayfa bulunamadı.">
@@ -9,8 +10,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h1>Sayfa Bulunamadı</h1>
       <p class="muted">Aradığınız sayfa taşınmış veya hiç var olmamış olabilir.</p>
       <div class="actions">
-        <a class="btn btn-gold" href="/">Ana Sayfaya Dön</a>
-        <a class="btn btn-outline" href="/iletisim">İletişime Geç</a>
+        <a class="btn btn-gold" href={withBase('/')}>Ana Sayfaya Dön</a>
+        <a class="btn btn-outline" href={withBase('/iletisim')}>İletişime Geç</a>
       </div>
     </div>
   </section>

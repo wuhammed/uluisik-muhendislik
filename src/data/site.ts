@@ -12,9 +12,15 @@ export const SITE = {
   url: 'https://uluisikmuhendislik.com',
 } as const;
 
+// Site kökü dışında bir base ile yayınlanırken iç bağlantıları düzeltir.
+export const withBase = (path: string): string => {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  return path === '/' ? base || '/' : `${base}${path}`;
+};
+
 export const NAV = [
-  { label: 'Ana Sayfa', href: '/' },
-  { label: 'Hizmetler', href: '/hizmetler' },
-  { label: 'Hakkımızda', href: '/hakkimizda' },
-  { label: 'İletişim', href: '/iletisim' },
+  { label: 'Ana Sayfa', href: withBase('/') },
+  { label: 'Hizmetler', href: withBase('/hizmetler') },
+  { label: 'Hakkımızda', href: withBase('/hakkimizda') },
+  { label: 'İletişim', href: withBase('/iletisim') },
 ] as const;

@@ -1,1 +1,8 @@
-<h1>Uluışık Mühendislik</h1>
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+---
+
+<BaseLayout title={SITE.name} description={SITE.slogan} isHome>
+  <h1>Uluışık Mühendislik</h1>
+</BaseLayout>

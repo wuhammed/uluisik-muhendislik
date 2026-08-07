@@ -1,0 +1,68 @@
+---
+import '@fontsource-variable/sora';
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import { SITE } from '../data/site';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileCtaBar from '../components/MobileCtaBar.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  isHome?: boolean;
+}
+
+const { title, description, isHome = false } = Astro.props;
+const fullTitle = isHome ? `${SITE.name} | ${SITE.tagline}` : `${title} | ${SITE.name}`;
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Electrician',
+  name: SITE.name,
+  description: SITE.slogan,
+  telephone: '+905469620537',
+  email: SITE.email,
+  url: SITE.url,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Mimarsinan Mahallesi 127. Sokak No:20/A',
+    addressLocality: 'Atakum',
+    addressRegion: 'Samsun',
+    addressCountry: 'TR',
+  },
+  areaServed: 'Samsun',
+};
+---
+
+<html lang="tr" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:site_name" content={SITE.name} />
+    <script is:inline>
+      const t = localStorage.getItem('theme');
+      document.documentElement.dataset.theme = t === 'light' || t === 'dark' ? t : 'dark';
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <MobileCtaBar />
+  </body>
+</html>

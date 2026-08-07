@@ -1,0 +1,227 @@
+:root,
+:root[data-theme='dark'] {
+  --bg: #0e1116;
+  --bg-raised: #151b24;
+  --bg-card: #1a212c;
+  --text: #f2f4f8;
+  --text-muted: #b8bec9;
+  --accent: #f5c51b;
+  --accent-ink: #141002;
+  --gold-gradient: linear-gradient(135deg, #f5c51b 0%, #d99a0b 100%);
+  --line: rgba(245, 197, 27, 0.16);
+  --line-soft: rgba(184, 190, 201, 0.14);
+  --whatsapp: #25d366;
+  --whatsapp-ink: #06240f;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --header-bg: rgba(14, 17, 22, 0.85);
+  --hero-glow: radial-gradient(ellipse 60% 50% at 70% 20%, rgba(245, 197, 27, 0.12), transparent 70%);
+}
+
+:root[data-theme='light'] {
+  --bg: #faf9f6;
+  --bg-raised: #ffffff;
+  --bg-card: #ffffff;
+  --text: #171a20;
+  --text-muted: #555c66;
+  --accent: #a06e04;
+  --accent-ink: #ffffff;
+  --gold-gradient: linear-gradient(135deg, #d9a80c 0%, #a06e04 100%);
+  --line: rgba(160, 110, 4, 0.25);
+  --line-soft: rgba(23, 26, 32, 0.12);
+  --whatsapp: #25d366;
+  --whatsapp-ink: #06240f;
+  --shadow: 0 10px 30px rgba(23, 26, 32, 0.1);
+  --header-bg: rgba(250, 249, 246, 0.88);
+  --hero-glow: radial-gradient(ellipse 60% 50% at 70% 20%, rgba(217, 168, 12, 0.14), transparent 70%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter Variable', system-ui, -apple-system, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Sora Variable', 'Inter Variable', system-ui, sans-serif;
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 4.5vw, 3.1rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: min(1120px, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+
+.section-alt {
+  background: var(--bg-raised);
+  border-block: 1px solid var(--line-soft);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.9rem;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.gold-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn svg {
+  width: 1.2em;
+  height: 1.2em;
+  flex: none;
+}
+
+.btn-gold {
+  background: var(--gold-gradient);
+  color: var(--accent-ink);
+}
+
+.btn-gold:hover {
+  box-shadow: 0 8px 22px rgba(217, 154, 11, 0.35);
+}
+
+.btn-outline {
+  border-color: var(--line);
+  color: var(--text);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-whatsapp {
+  background: var(--whatsapp);
+  color: var(--whatsapp-ink);
+}
+
+.btn-whatsapp:hover {
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  padding: 1.6rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--line);
+  transform: translateY(-3px);
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 700px) {
+  .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.divider {
+  height: 2px;
+  border: 0;
+  margin: 0;
+  background: var(--gold-gradient);
+  opacity: 0.5;
+  width: 64px;
+  border-radius: 2px;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 4.4rem;
+  }
+}

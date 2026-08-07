@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../data/site';
+import powerLines from '../assets/power-lines.jpg';
 ---
 
 <BaseLayout
@@ -28,6 +30,13 @@ import { SITE } from '../data/site';
           şekilde tamamlamayı hedefliyoruz.
         </p>
       </div>
+      <Image
+        src={powerLines}
+        alt="Yüksek gerilim iletim hatları"
+        class="about-img"
+        widths={[768, 1280, 1600]}
+        sizes="(min-width: 1120px) 1120px, 100vw"
+      />
     </div>
   </section>
 
@@ -74,6 +83,16 @@ import { SITE } from '../data/site';
 
   .about-text p {
     font-size: 1.05rem;
+  }
+
+  .page-head :global(.about-img) {
+    width: 100%;
+    height: auto;
+    max-height: 380px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-top: 2.2rem;
+    border: 1px solid var(--line-soft);
   }
 
   .vision-card h2 {

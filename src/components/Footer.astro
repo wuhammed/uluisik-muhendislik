@@ -1,0 +1,125 @@
+---
+import Logo from './Logo.astro';
+import BrandIcons from './BrandIcons.astro';
+import { SITE } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <Logo />
+      <p class="muted footer-blurb">
+        AG ve YG elektrik projelendirme, abonelik işlemleri, altyapı ve elektrik taahhüt
+        hizmetlerinde projeden uygulamaya tek noktadan çözüm.
+      </p>
+    </div>
+    <div>
+      <h3>İletişim</h3>
+      <ul class="footer-contact">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <a href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
+        </li>
+        <li>
+          <span class="wa-icon"><BrandIcons name="whatsapp" size={18} /></span>
+          <a href={SITE.whatsappHref} rel="noopener">WhatsApp'tan yazın</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <path d="m22 7-10 6L2 7"></path>
+          </svg>
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <a href={SITE.mapsUrl} rel="noopener">{SITE.address}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p class="muted">© {year} {SITE.name}. Tüm hakları saklıdır.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg-raised);
+    border-top: 1px solid var(--line-soft);
+    padding-top: 3rem;
+    margin-top: 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  @media (min-width: 700px) {
+    .footer-grid {
+      grid-template-columns: 1.2fr 1fr;
+    }
+  }
+
+  .footer-blurb {
+    margin-top: 1rem;
+    max-width: 34ch;
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .footer-contact svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: none;
+    margin-top: 0.2rem;
+    color: var(--accent);
+  }
+
+  .wa-icon {
+    color: var(--whatsapp);
+    margin-top: 0.2rem;
+    flex: none;
+  }
+
+  .footer-contact a {
+    color: var(--text-muted);
+  }
+
+  .footer-contact a:hover {
+    color: var(--accent);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--line-soft);
+    margin-top: 2.5rem;
+    padding-block: 1.2rem;
+    font-size: 0.88rem;
+  }
+</style>

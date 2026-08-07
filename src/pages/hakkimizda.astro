@@ -1,0 +1,122 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+import powerLines from '../assets/power-lines.jpg';
+---
+
+<BaseLayout
+  title="Hakkımızda"
+  description="Uluışık Mühendislik; projelendirme, resmi süreçler, altyapı, uygulama ve enerji bağlantısını bir bütün olarak ele alan elektrik mühendisliği ve taahhüt firmasıdır."
+>
+  <section class="section page-head">
+    <div class="container">
+      <span class="eyebrow">Hakkımızda</span>
+      <h1>Baştan Sona Elektrik Çözümleri</h1>
+      <hr class="divider" />
+      <div class="about-text">
+        <p class="muted">
+          Bizim için elektrik mühendisliği yalnızca bir proje çiziminden ibaret değildir.&#32;<strong
+            >Projelendirme, resmi süreçler, altyapı, uygulama ve enerji bağlantısı</strong
+          >&#32;bir bütün olarak değerlendirilmelidir.
+        </p>
+        <p class="muted">
+          Bu anlayışla, müşterilerimizin ihtiyaçlarını doğru analiz ederek; teknik açıdan
+          güvenilir, ekonomik, sürdürülebilir ve uygulanabilir çözümler geliştiriyoruz.
+        </p>
+        <p class="muted">
+          Her projede&#32;<strong
+            >mühendislik disiplini, teknik doğruluk, iş güvenliği ve kalite</strong
+          >&#32;ilkelerinden taviz vermeden çalışıyor; üstlendiğimiz işleri zamanında ve
+          profesyonel şekilde tamamlamayı hedefliyoruz.
+        </p>
+      </div>
+      <Image
+        src={powerLines}
+        alt="Yüksek gerilim iletim hatları"
+        class="about-img"
+        widths={[768, 1280, 1600]}
+        sizes="(min-width: 1120px) 1120px, 100vw"
+      />
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container grid grid-2">
+      <div class="card vision-card">
+        <h2>Vizyonumuz</h2>
+        <hr class="divider" />
+        <p class="muted">
+          Elektrik mühendisliği ve taahhüt sektöründe; güvenilirliği, teknik yetkinliği ve
+          kaliteli hizmet anlayışıyla tercih edilen, modern mühendislik çözümleri sunan öncü
+          firmalardan biri olmak.
+        </p>
+      </div>
+      <div class="card vision-card">
+        <h2>Misyonumuz</h2>
+        <hr class="divider" />
+        <p class="muted">
+          Müşterilerimizin enerji ihtiyaçlarını doğru analiz ederek; güvenli, kaliteli,
+          mevzuata uygun ve sürdürülebilir elektrik sistemleri tasarlamak ve uygulamak.
+          Projenin her aşamasında mühendislik standartlarını esas alarak, müşterilerimize
+          uzun vadeli değer sağlayan çözümler sunmak.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container cta-inner">
+      <div>
+        <h2>Bizimle çalışmak ister misiniz?</h2>
+        <p class="muted">Projenizi görüşmek için bize her zaman ulaşabilirsiniz.</p>
+      </div>
+      <a class="btn btn-gold" href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head .about-text {
+    max-width: 75ch;
+    margin-top: 1.5rem;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+  }
+
+  .page-head :global(.about-img) {
+    width: 100%;
+    height: auto;
+    max-height: 380px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-top: 2.2rem;
+    border: 1px solid var(--line-soft);
+  }
+
+  .vision-card h2 {
+    font-size: 1.35rem;
+  }
+
+  .vision-card p {
+    margin: 1rem 0 0;
+  }
+
+  .cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-inner h2 {
+    margin-bottom: 0.4rem;
+  }
+
+  .cta-inner p {
+    margin: 0;
+  }
+</style>

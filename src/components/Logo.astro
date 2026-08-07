@@ -1,0 +1,88 @@
+---
+import { SITE } from '../data/site';
+
+// Metin logotype: gerçek logo dosyası (src/assets/logo.png) teslim edilene
+// kadar kullanılır; tipografisi logodaki dizilimi izler.
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<a href="/" class:list={['logo', { compact }]} aria-label={`${SITE.name} — ana sayfa`}>
+  <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+    <path
+      d="M32 4 8 12v18c0 15 10 26 24 30 14-4 24-15 24-30V12L32 4z"
+      fill="none"
+      stroke="url(#logo-gold)"
+      stroke-width="4"></path>
+    <path d="M36 16 22 36h8l-4 12 16-20h-8l4-12z" fill="url(#logo-gold)"></path>
+    <defs>
+      <linearGradient id="logo-gold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f5c51b"></stop>
+        <stop offset="1" stop-color="#d99a0b"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+  <span class="logo-text">
+    <span class="logo-name gold-text">ULUIŞIK MÜHENDİSLİK</span>
+    <span class="logo-tagline">{SITE.tagline}</span>
+  </span>
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: inherit;
+  }
+
+  .logo-mark {
+    width: 2.4rem;
+    height: 2.4rem;
+    flex: none;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+
+  .logo-name {
+    font-family: 'Sora Variable', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .logo-tagline {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .compact .logo-mark {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .compact .logo-name {
+    font-size: 0.88rem;
+  }
+
+  @media (max-width: 420px) {
+    .logo-tagline {
+      display: none;
+    }
+
+    .logo-name {
+      font-size: 0.88rem;
+    }
+  }
+</style>

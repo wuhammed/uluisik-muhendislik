@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BrandIcons from '../components/BrandIcons.astro';
+import { SITE } from '../data/site';
+---
+
+<BaseLayout
+  title="İletişim"
+  description={`Uluışık Mühendislik iletişim: ${SITE.phoneDisplay} — ${SITE.address}. Telefon, WhatsApp ve e-posta ile bize ulaşın.`}
+>
+  <section class="section page-head">
+    <div class="container">
+      <span class="eyebrow">İletişim</span>
+      <h1>Bize Ulaşın</h1>
+      <p class="muted head-sub">
+        Keşif, teklif ve tüm sorularınız için bize telefon, WhatsApp veya e-posta ile
+        ulaşabilirsiniz.
+      </p>
+    </div>
+  </section>
+
+  <section class="section contact">
+    <div class="container grid grid-2 contact-grid">
+      <a class="card contact-card" href={SITE.phoneHref}>
+        <span class="contact-icon gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+        </span>
+        <div>
+          <h2>Telefon</h2>
+          <p class="contact-value">{SITE.phoneDisplay}</p>
+          <p class="muted">Mesai saatleri içinde arayabilirsiniz.</p>
+        </div>
+      </a>
+
+      <a class="card contact-card" href={SITE.whatsappHref} rel="noopener">
+        <span class="contact-icon whatsapp">
+          <BrandIcons name="whatsapp" size={26} />
+        </span>
+        <div>
+          <h2>WhatsApp</h2>
+          <p class="contact-value">{SITE.phoneDisplay}</p>
+          <p class="muted">Mesajınıza en kısa sürede dönüş yapılır.</p>
+        </div>
+      </a>
+
+      <a class="card contact-card" href={`mailto:${SITE.email}`}>
+        <span class="contact-icon gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <path d="m22 7-10 6L2 7"></path>
+          </svg>
+        </span>
+        <div>
+          <h2>E-posta</h2>
+          <p class="contact-value">{SITE.email}</p>
+          <p class="muted">Teklif ve proje dosyalarınızı iletebilirsiniz.</p>
+        </div>
+      </a>
+
+      <a class="card contact-card" href={SITE.mapsUrl} rel="noopener">
+        <span class="contact-icon gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </span>
+        <div>
+          <h2>Adres</h2>
+          <p class="contact-value">{SITE.address}</p>
+          <p class="muted">Yol tarifi için tıklayın.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <p class="muted work-note">
+        Projelendirmeden uygulamaya, abonelik işlemlerinden altyapı çalışmalarına kadar
+        elektrik ihtiyaçlarının tüm aşamalarında müşterilerimize tek noktadan hizmet sunmayı
+        hedefliyoruz.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head {
+    padding-bottom: 1rem;
+  }
+
+  .head-sub {
+    max-width: 58ch;
+    font-size: 1.05rem;
+  }
+
+  .contact {
+    padding-top: 1.5rem;
+  }
+
+  .contact-card {
+    display: flex;
+    gap: 1.1rem;
+    color: inherit;
+  }
+
+  .contact-card h2 {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-value {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-card .muted {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .contact-icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 12px;
+    flex: none;
+  }
+
+  .contact-icon.gold {
+    background: var(--gold-gradient);
+    color: var(--accent-ink);
+  }
+
+  .contact-icon.gold svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .contact-icon.whatsapp {
+    background: var(--whatsapp);
+    color: #ffffff;
+  }
+
+  .work-note {
+    max-width: 70ch;
+    font-size: 1.05rem;
+    margin: 0;
+  }
+</style>
